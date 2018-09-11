@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <title>Kanban Board API nexxtGen</title>
+    
+
+    <link rel="stylesheet" href="prod-assets/style.css">     
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&amp;subset=latin-ext" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">   
+</head>
+<body>
+    
+    <div id="board" class="board t-header">
+        <div class="t-header__hero">
+            <h1 class="t-header__hero-h1">Kanban board</h1>
+            <button class="create-column">Add a column</button>    
+        </div>
+            
+        <div class="column-container"></div>                                  
+    </div>                
+   
+        
+
+        <script id="column-template" type="x-tmpl-mustache">
+            <div class="column t-header__col-template">
+                <div class="t-header__container">
+                    <div class="t-form">
+                        <button class="btn-delete t-header__btn-head">remove column</button>     
+                        <h2 class="column-title">{{ name }}</h2>                        
+                        <button class="add-card">Add a card</button>                                               
+                        <ul id={{ id }} class="column-card-list"></ul>                             
+                    </div>
+                </div>
+            </div>
+        </script>
+
+        <script id="card-template" type="x-tmpl-mustache">
+            <div class="card">
+            <p class="card-description">{{ description }}</p>
+            <button class="btn-delete">x</button>
+            </div
+        </script>
+    
+   
+
+
+    
+      <script type="text/javascript" src="vendor/mustache.js"></script>       
+      <script type="text/javascript" src="vendor/Sortable.min.js"></script> 
+      <script type="text/javascript" src="js/column.js"></script>
+      <script type="text/javascript" src="js/card.js"></script>
+      <script type="text/javascript" src="js/board.js"></script>      
+      <script type="text/javascript" src="js/app.js"></script>       
+</body>
+</html>
