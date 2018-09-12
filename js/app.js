@@ -1,20 +1,41 @@
     
-    //Function generate radnom 10 length string
-        function randomString() {   
-            var chars = '0123456789abcdefghiklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXTZ';
-            var str = '';
-            for ( i = 0; i < 10; i++) {
-                str += chars[Math.floor(Math.random() * chars.length)];
-            }
-            return str;
+    
+        // Vars
+        var baseUrl = 'https://kodilla.com/pl/bootcamp-api';
+        var myHeaders = {
+        'X-Client-Id': '3519',
+        'X-Auth-Token': '24c31d181777d61db46ede0c65399590',
+        'Content-Type': 'application/json; charset=utf-8'
+        };
+        
+        // Fetch API
+        fetch(baseUrl + '/board', { headers: myHeaders }) //ADD v2
+            .then(function(resp) {
+                return resp.json();
+            })
+            .then(function(resp) {
+                setupColumns(resp.columns);
+        });
+
+        // Func for create column and ADD to board onject. ADD v2
+        function setupColumns(columns) {
+            columns.forEach(function(column) {
+                  var col = new Column(column.id, column.name);
+                board.addColumn(col);
+                setupCards(col, column.cards);
+            });
         }
-    
-        //Function for generate mustache template from html code and add this to box (<div> etc).
-        //--- name- template id in html code
-        //--- data - dane podstawione do szablonu
-        //--- basicElement - Element w który zostanie opakowany szablon. Potrzebny do wytworzenia drzewa DOM by mieć dostęp
-        //do DOM Api ponieważ Mustache.js zwraca w funkcji render string'a z zawartością szablonu!        
-    
+
+        //Function for setup carts in columns. ADD v2
+        function setupCards(col, cards) {
+            cards.forEach(function (card) {
+            var cardObj = new Card(card.id, card.name);
+              col.addCard(cardObj);
+            });
+        }
+
+
+        //Function for generate mustache template from html code, and add this to box (<div> etc. html element ).
         function generateTemplate(name, data, basicElement) {
             var template = document.getElementById(name).innerHTML;
             var element = document.createElement(basicElement || 'div'); // Create random div
@@ -23,32 +44,8 @@
             element.innerHTML = Mustache.render(template, data)
     
             return element;      
-        } 
-    
-        // Create All Kanban objects    
-        // CREATING COLUMNS
-        var ideaColumn = new Column('Ideas');
-        var todoColumn = new Column('To do');
-        var doingColumn = new Column('Doing');
-        var doneColumn = new Column('Done');
+        }     
         
-        // ADDING COLUMNS TO THE BOARD
-        board.addColumn(ideaColumn);
-        board.addColumn(todoColumn);
-        board.addColumn(doingColumn);
-        board.addColumn(doneColumn);
-        
-        // CREATING CARDS
-        var card1 = new Card('New task');
-        var card2 = new Card('Create kanban boards');
-        var card3 = new Card('Your Ideas');
-        var card4 = new Card('Can you drop me and drag!');
-        
-        // ADDING CARDS TO COLUMNS
-        ideaColumn.addCard(card3);
-        ideaColumn.addCard(card4);
-        todoColumn.addCard(card1);
-        doingColumn.addCard(card2);        
     
     
    
