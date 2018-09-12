@@ -21,13 +21,13 @@
         Card.prototype = {
             removeCard: function() {
                 var self = this;
-              
+                              
                 fetch(baseUrl + '/card/' + self.id, { method: 'DELETE', headers: myHeaders })
                   .then(function(resp) {
                     return resp.json();
                   })
                   .then(function(resp) {
-                    self.element.parentNode.removeChild(this.element);
+                    self.element.parentNode.removeChild(self.element);
                   })
               }
         }

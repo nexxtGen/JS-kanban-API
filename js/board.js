@@ -1,6 +1,5 @@
-  
-        // Create board Object
-    
+          // Create board Object
+
         var board = {
             name: 'Kanban Board',
             element: document.querySelector('#board .column-container'),
@@ -20,16 +19,20 @@
             fetch(baseUrl + '/column', {
                 method: 'POST',
                 headers: myHeaders,
-                body: data,
+                body: data
               })
+
               .then(function(resp) {
                 return resp.json();
               })
+              
               .then(function(resp) {
                 var column = new Column(resp.id, name);
                 board.addColumn(column);
               });
           });
+
+
 
         // Drag & Drop function for sort columns, cards.
         function initSortable(id) {

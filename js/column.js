@@ -16,27 +16,28 @@
                 }
               
                 if (event.target.classList.contains('add-card')) { //Many changes v2
-                    var cardName = prompt("Enter the name of the card");
-                    event.preventDefault();
-
+                    var cardName = prompt("Enter the name of the card");  
                     var data = new FormData();
+
                     data.append('name', cardName);
                     data.append('bootcamp_kanban_column_id', self.id);
+
+                    event.preventDefault();
 
                     fetch(baseUrl + '/card', {
                         method: 'POST',
                         headers: myHeaders,
-                        body: data,
+                        body: data
                     })
-                    .then(function(res) {
-                        return res.json();
+                    .then(function(resp) {
+                        return resp.json();
                     })
                     .then(function(resp) {
                         var card = new Card(resp.id, cardName);
                         self.addCard(card);
                     });
 
-                    self.addCard(new Card(cardName));
+                    //self.addCard(new Card(cardName));
                 }
             });
         }
@@ -48,6 +49,7 @@
             },
             removeColumn: function() {  //Many changes v2!
                 var self = this; // Add v2
+
                 fetch(baseUrl + '/column/' + self.id, { method: 'DELETE', headers: myHeaders })
                     .then(function(resp) {
                         return resp.json();
@@ -55,4 +57,5 @@
                     .then(function(resp) {
                         self.element.parentNode.removeChild(self.element);
                     });
+            }
         };
