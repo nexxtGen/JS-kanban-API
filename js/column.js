@@ -24,18 +24,21 @@
 
                     event.preventDefault();
 
-                    fetch(baseUrl + '/card', {
-                        method: 'POST',
-                        headers: myHeaders,
-                        body: data
-                    })
-                    .then(function(resp) {
-                        return resp.json();
-                    })
-                    .then(function(resp) {
-                        var card = new Card(resp.id, cardName);
-                        self.addCard(card);
-                    });
+                    if (cardName != '' && cardName != null && cardName != isNaN) {
+                        
+                        fetch(baseUrl + '/card', {
+                            method: 'POST',
+                            headers: myHeaders,
+                            body: data
+                        })
+                        .then(function(resp) {
+                            return resp.json();
+                        })
+                        .then(function(resp) {
+                            var card = new Card(resp.id, cardName);
+                            self.addCard(card);
+                        });
+                    }
 
                     //self.addCard(new Card(cardName));
                 }

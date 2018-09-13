@@ -15,21 +15,24 @@
             var data = new FormData();
           
             data.append('name', name);
-          
-            fetch(baseUrl + '/column', {
-                method: 'POST',
-                headers: myHeaders,
-                body: data
-              })
 
-              .then(function(resp) {
-                return resp.json();
-              })
+            if (name != '' && name != null && name != isNaN) {
               
-              .then(function(resp) {
-                var column = new Column(resp.id, name);
-                board.addColumn(column);
-              });
+                fetch(baseUrl + '/column', {
+                  method: 'POST',
+                  headers: myHeaders,
+                  body: data
+                })
+                
+                .then(function(resp) {
+                  return resp.json();
+                })
+                
+                .then(function(resp) {
+                  var column = new Column(resp.id, name);
+                  board.addColumn(column);
+                });
+            }
           });
 
 
