@@ -5,7 +5,7 @@
           
             this.id = id;
             this.name = name || 'No name given';
-            this.element = generateTemplate('card-template', { description: this.name }, 'li');
+            this.element = generateTemplate('card-template', { description: this.name, id: this.id }, 'li');
     
             //delete Card
             this.element.querySelector('.card').addEventListener('click', function (event) {
