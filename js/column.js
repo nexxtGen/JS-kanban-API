@@ -18,10 +18,11 @@
                 if (event.target.classList.contains('add-card')) { //Many changes v2
                     var cardName = prompt("Enter the name of the card");  
                     var data = new FormData();
-
+                    const selfColumnId = self.id;
                     data.append('name', cardName);
                     data.append('bootcamp_kanban_column_id', self.id);
                     console.log('formData z nowej karty', data);
+                    console.log('Kudła id kolumny', selfColumnId);
                     event.preventDefault();
 
                     if (cardName != '' && cardName != null && cardName != isNaN) {

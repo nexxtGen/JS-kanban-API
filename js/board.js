@@ -109,18 +109,13 @@
                   //console.log('Sortuje do: ', evt.to );  
                 }              
             });
-        }    
-
-
-
-
-        // Add function: sortable columns  
-        /*      
+        }  
+        //Add function: sortable columns                
         Sortable.create(board.element, {
           group: 'kanban-columns',
           sort: true
         });
 
-        */
+        
         
     
