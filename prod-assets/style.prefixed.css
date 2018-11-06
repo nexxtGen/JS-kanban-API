@@ -158,6 +158,20 @@ img { max-width: 100%; }
 
 .add-card:hover { background: rgba(0, 0, 0, 0.7); transition: all 0.5s cubic-bezier(0.25, 0.25, 0, 0.25) 0s; }
 
+.btn-delete { font-size: 15px; color: white; display: -ms-flexbox; display: flex; -ms-flex-pack: center; justify-content: center; border: none; cursor: pointer; background: rgba(21, 102, 177, 0.5); transition: all 0.5s cubic-bezier(0.25, 0.25, 0, 0.25) 0s; }
+
+.btn-delete:hover { background: rgba(255, 3, 3, 0.6); transition: all 0.5s cubic-bezier(0.25, 0.25, 0, 0.25) 0s; }
+
+.rename { font-size: 15px; color: white; margin-left: 15px; padding: 4px 8px; border: 1px solid black; cursor: pointer; background: rgba(21, 177, 104, 0.5); transition: all 0.5s cubic-bezier(0.25, 0.25, 0, 0.25) 0s; }
+
+.rename:hover { background: rgba(55, 215, 255, 0.6); transition: all 0.5s cubic-bezier(0.25, 0.25, 0, 0.25) 0s; }
+
+.btn-edit-card { font-size: 15px; padding: 5px; color: white; display: -ms-flexbox; display: flex; -ms-flex-pack: center; justify-content: center; border: none; cursor: pointer; background: rgba(21, 177, 104, 0.5); transition: all 0.5s cubic-bezier(0.25, 0.25, 0, 0.25) 0s; }
+
+.btn-edit-card:hover { background: rgba(55, 215, 255, 0.6); transition: all 0.5s cubic-bezier(0.25, 0.25, 0, 0.25) 0s; }
+
+.fas { font-size: 16px; }
+
 .u-flex-c { display: -ms-flexbox; display: flex; -ms-flex-pack: center; justify-content: center; }
 
 .u-object-fit-cover { -o-object-fit: cover; object-fit: cover; }

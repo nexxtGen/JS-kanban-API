@@ -38,8 +38,7 @@
             },
             //Method to edit card
             editCard: function(name) {
-              const self = this;              
-              const nameCardEdited = name;
+              const self = this;    
               const columnIdEditCard = $("div"+"#"+self.id).closest("ul" ).attr( "id");
               console.log('Id columny w func edit card', columnIdEditCard);             
 
@@ -47,13 +46,13 @@
                 url: baseUrl + '/card/' + self.id,
                 data: {
                       id: self.id,
-                      name: nameCardEdited,
+                      name: name,
                       bootcamp_kanban_column_id: columnIdEditCard
                 },
                 method: 'PUT',
                 success: function(response) {
                   //var self2 = this;
-                  $('#'+self.id).find(".card-description").text(nameCardEdited);
+                  $('#'+self.id).find(".card-description").text(name);
                   //console.log('test 2', $('.card-description '+'#'+supportId).text(nameCardEdited));
                   //$('.card-description #'+self.id).text(nameCardEdited);
                   //var toDomEdit = $('.card-description').closest(self.element);
@@ -76,6 +75,8 @@
               .then(function(resp) {
                 return resp.json();
               }) */
+
+              // <i class="fas fa-pencil-alt"></i>
             }
         }
     

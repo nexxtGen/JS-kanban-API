@@ -193,6 +193,65 @@
   &:hover {
     background: rgba($color: #000000, $alpha: 0.7);
     transition: $thetransition;
-  }  
+  }
   
+}
+
+.btn-delete {  
+  font-size: 15px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  //align-self: flex-start;
+  border: none;
+  cursor: pointer;
+  background: rgba($color: #1566b1, $alpha: 0.5);
+  transition: $thetransition;
+  
+  &:hover {
+    background: rgba($color: #ff0303, $alpha: 0.6);
+    transition: $thetransition;
+  }  
+}
+
+.rename {  
+  font-size: 15px;
+  color: white;
+  margin-left: 15px;
+  padding: 4px 8px;
+  border: 1px solid black;
+  //display: flex;
+  //justify-content: center;
+  //align-self: flex-start;
+  
+  cursor: pointer;
+  background: rgba($color: #15b168, $alpha: 0.5);
+  transition: $thetransition;
+  
+  &:hover {
+    background: rgba($color: #37d7ff, $alpha: 0.6);
+    transition: $thetransition;
+  }  
+}
+
+.btn-edit-card {  
+  font-size: 15px;
+  padding: 5px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  //align-self: flex-start;
+  border: none;
+  cursor: pointer;
+  background: rgba($color: #15b168, $alpha: 0.5);
+  transition: $thetransition;
+  
+  &:hover {
+    background: rgba($color: #37d7ff, $alpha: 0.6);
+    transition: $thetransition;
+  }  
+}
+
+.fas {  
+  font-size: 16px;
 }

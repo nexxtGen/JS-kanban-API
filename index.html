@@ -6,7 +6,10 @@
 
     <link rel="stylesheet" href="prod-assets/style.css">     
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&amp;subset=latin-ext" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">   
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+   
 </head>
 <body>
     <div id="board" class="board t-header">
@@ -24,7 +27,7 @@
                 <div class="t-header__container">
                     <div class="t-form">
                         <button class="btn-delete t-header__btn-head">remove column</button>     
-                        <h2 class="column-title">{{ name }}<span><button class="col-title-edit">Rename</button>  </span></h2>                                              
+                        <h2 class="column-title"><span class="renamed{{id}}" >{{ name }}</span><span><button class="rename">Rename</button>  </span></h2>                                              
                         <button class="add-card">Add a card</button>                                               
                         <ul id={{ id }} class="column-card-list"></ul>                             
                     </div>
@@ -33,9 +36,9 @@
         </script>
 
         <script id="card-template" type="x-tmpl-mustache">
-            <div id={{ id }} class="card">
+            <div id={{ id }} class="card">                    
+            <button class="btn-edit-card">E</button>
             <p class="card-description" id={{ id }}>{{ description }}</p>
-            <button class="btn-edit-card">ED</button>
             <button class="btn-delete">x</button>
             </div
         </script>

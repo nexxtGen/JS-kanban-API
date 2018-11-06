@@ -39,9 +39,11 @@
                             var card = new Card(resp.id, cardName);
                             self.addCard(card);
                         });
-                    }
-
-                    //self.addCard(new Card(cardName));
+                    }                     
+                } else if (event.target.classList.contains('rename')) {
+                    var columnName = prompt("Enter the name of the Column");
+                    self.editColumnName(columnName, this.name);
+                    event.preventDefault();
                 }
             });
         }
@@ -61,5 +63,21 @@
                     .then(function(resp) {
                         self.element.parentNode.removeChild(self.element);
                     });
+            },
+
+            editColumnName: function(name, oldName) {
+                var self = this;
+
+                $.ajax({
+                    url: baseUrl + '/column/' + self.id,
+                    data: {
+                          id: self.id,
+                          name: name                          
+                    },
+                    method: 'PUT',
+                    success: function(response) { 
+                        $('.renamed'+self.id).text(name);                      
+                    }
+                  });
             }
         };
