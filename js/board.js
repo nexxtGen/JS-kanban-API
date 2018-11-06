@@ -42,7 +42,7 @@
             Sortable.create(el, {
                 group: 'kanban-cards',
                 sort: true,
-                onAdd: function (evt) {
+                onAdd: function(evt) {
                   //Szukam Id przenoszonej karty z drzewie DOM 3
                   var cardItemElement = evt.item;
                   var cardDivTarget = cardItemElement.querySelector(".card");
@@ -56,31 +56,59 @@
                   //console.log('card text:', typeof cardText);
 
                   //Szukam i przypisuję wartosć Id kolumny do której karta została przeniesiona                  
-                  //var columnId = parseInt(evt.to.id);    
-                  //var columnIdInt = parseInt(columnId);
+                  var columnId = parseInt(evt.to.id);    
+                  var columnIdInt = parseInt(columnId);
                   // Dodanie zmian w sortowaniu do godzilla REST API
-                  var sortableData = new FormData();
-                  sortableData.append('name', cardText);
-                  sortableData.append('bootcamp_kanban_column_id', evt.to.id);                 
+                  let data = new FormData();                  
+                  data.append('id', cardId);  
+                  data.append('name', cardText);                      
+                  data.append('bootcamp_kanban_column_id', columnIdInt); 
 
-                  //console.log('test evt.to parametry:', typeof(columnIdInt));
-                  //console.log('sortable data value:', sortableData);
-                  //console.log('Moje naglowki', myHeaders);
+                  // Działa                  
+                  $.ajax({
+                    url: baseUrl + '/card/' + cardId,
+                    data: {
+                          id: cardId,
+                          name: cardText,
+                          bootcamp_kanban_column_id: columnIdInt
+                    },
+                    method: 'PUT',
+                    success: function(response) {
+                      console.log('Odp serva:',response);
+                    }
+                  });  
 
-                  fetch(baseUrl + '/card/' + cardId, { 
-                      method: 'PUT',
+                  //Nie działa                  
+                  /*
+                  fetch(`${baseUrl}/card/${cardId}`, { 
+                      method: 'PUT',                                                                 
                       headers: myHeaders, 
-                      body: sortableData // name: cardText, bootcamp_kanban_column_id: evt.to.id  
+                      body: data
                   })
-                  .then(function(resp) {
-                      return console.log('Test resp json', resp.json());
-                  }); 
+                  .then(response => console.log('Odp z serva:', response.json()))                  
+                  });
+                  */                              
+                  
+                  
+                 /*
+                  if (cardText != '') {
+                    axios.put( `${baseUrl}/card/${cardId}`, { 
+                      id: cardId,
+                      name: cardText,
+                      bootcamp_kanban_column_id: columnIdInt                        
+                          // id: cardId, name: cardText, bootcamp_kanban_column_id: evt.to.id  
+                    }, myHeaders)
+                    .then(function (response) {
+                      console.log('respo serwer:', response);
+                    });
+                  }
+                  */
                   // testy sortable API
                   //console.log('itemEL', cardItemElement);  // dragged HTMLElement
                   //console.log('Sortuje z: ', evt.from );
                   //console.log('Sortuje do: ', evt.to );  
-                }
-            })
+                }              
+            });
         }    
 
 

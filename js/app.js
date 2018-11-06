@@ -4,10 +4,15 @@
         var baseUrl = 'https://kodilla.com/pl/bootcamp-api';
         var myHeaders = {
         'X-Client-Id': '3519',
-        'X-Auth-Token': '24c31d181777d61db46ede0c65399590',
+        'X-Auth-Token': '24c31d181777d61db46ede0c65399590' 
         //'Content-Type': 'application/json; charset=utf-8'
         };
-        
+
+        $.ajaxSetup({
+            headers: myHeaders
+        });
+        /*
+        */ 
         //Function for generate mustache template from html code, and add this to box (<div> etc. html element ).
         function generateTemplate(name, data, basicElement) {
             var template = document.getElementById(name).innerHTML;
