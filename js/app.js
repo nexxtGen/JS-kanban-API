@@ -1,11 +1,11 @@
     
     
         // Vars
+		var proxyUrl = 'https://cors-anywhere.herokuapp.com/';
         var baseUrl = 'https://kodilla.com/pl/bootcamp-api';
         var myHeaders = {
         'X-Client-Id': '3519',
-        'X-Auth-Token': '24c31d181777d61db46ede0c65399590' 
-        //'Content-Type': 'application/json; charset=utf-8'
+        'X-Auth-Token': '24c31d181777d61db46ede0c65399590'         
         };
 
         $.ajaxSetup({
@@ -25,7 +25,7 @@
         }     
 
         // Fetch API
-        fetch(baseUrl + '/board', { headers: myHeaders }) //ADD v2
+        fetch(proxyUrl + baseUrl + '/board', { headers: myHeaders }) //ADD v2
             .then(function(resp) {
                 return resp.json();
             })
